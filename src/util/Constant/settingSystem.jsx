@@ -1,4 +1,4 @@
-export const DOMAIN = 'http://localhost:7000/products';
+export const DOMAIN = 'https://git.heroku.com/student-mana.git/products';
 
 export const TOKEN = 'accessToken';
 
