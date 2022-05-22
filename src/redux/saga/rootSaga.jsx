@@ -1,5 +1,5 @@
 import {all} from 'redux-saga/effects'
-import { theoDoiCreateProduct, theoDoiDeleteProduct, theoDoiGetAllProductSaga, theoDoiUpdateProduct } from './ProductSaga'
+import { theoDoiBuyProductSaga, theoDoiCreateProduct, theoDoiDeleteProduct, theoDoiGetAllProductSaga, theoDoiUpdateProduct } from './ProductSaga'
 
 export function* rootSaga(){
 
@@ -7,6 +7,7 @@ export function* rootSaga(){
         theoDoiGetAllProductSaga(),
         theoDoiCreateProduct(),
         theoDoiUpdateProduct(),
-        theoDoiDeleteProduct()
+        theoDoiDeleteProduct(),
+        theoDoiBuyProductSaga()
     ])
 }

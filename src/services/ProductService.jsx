@@ -20,6 +20,10 @@ export class ProductService extends baseService {
     deleteProduct = (id)=>{
         return this.delete(`/${id}`)
     }
+
+    buyProduct = (id)=>{
+        return this.put(`/buy-product/${id}`)
+    }
 }
 
 export const productService = new ProductService();

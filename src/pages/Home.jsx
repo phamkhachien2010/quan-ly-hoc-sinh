@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { OPEN_MODAL, OPEN_MODAL_UPDATE } from '../redux/Constants/ConstAction';
-import { DELETE_PRODUCT_API, GET_ALL_PRODUCT_API } from '../redux/Constants/ConstSaga';
+import { BUY_PRODUCT_PRODUCT_API, DELETE_PRODUCT_API, GET_ALL_PRODUCT_API } from '../redux/Constants/ConstSaga';
 import { CREATE_PRODUCT, UPDATE_PRODUCT } from '../util/Constant/settingSystem';
 import ModalProducts from './ModalProducts'
 import { Table } from 'antd';
@@ -90,12 +90,22 @@ export default function Home(props) {
                             sanPhamUpdate: sanPham
                         })
                     }}>Sửa</button>
-                    <button className='btn btn-danger' onClick={() => {
+
+                    <button className='btn btn-danger mr-3' onClick={() => {
                         dispatch({
                             type: DELETE_PRODUCT_API,
                             id: sanPham.id
                         })
                     }}>Xoá</button>
+
+                    <button className='btn btn-secondary' onClick={()=>{
+                        dispatch({
+                            type:BUY_PRODUCT_PRODUCT_API,
+                            id: sanPham.id
+                        })
+                    }}>
+                        Nhập hàng
+                    </button>
                 </div>
             },
             align: 'center',
@@ -103,8 +113,10 @@ export default function Home(props) {
         },
     ];
 
+    const bgImgPath = require('../assets/img/geran-de-klerk-bKhETeDV1WM-unsplash.jpg')
+
     return (
-        <div style={{ background: 'url(./img/geran-de-klerk-bKhETeDV1WM-unsplash.jpg)', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }} className='h-screen' >
+        <div style={{ background: `url(${bgImgPath})`, backgroundPosition: 'bottom', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }} className='h-screen' >
             <div className='container text-center relative'>
                 <h1 className='text-5xl pt-5 text-white'>Quản lý sản phẩm</h1>
                 <button className='btn btn-primary absolute top-12 right-0' onClick={() => {

@@ -2,7 +2,7 @@ import { takeLatest, call, put } from 'redux-saga/effects'
 import { productService } from '../../services/ProductService'
 import { STATUS_CODE } from '../../util/Constant/settingSystem';
 import { CLOSE_MODAL, CLOSE_MODAL_UPDATE, GET_ALL_PRODUCT } from '../Constants/ConstAction';
-import { CREATE_PRODUCT_API, DELETE_PRODUCT_API, GET_ALL_PRODUCT_API, UPDATE_PRODUCT_API } from '../Constants/ConstSaga'
+import { BUY_PRODUCT_PRODUCT_API, CREATE_PRODUCT_API, DELETE_PRODUCT_API, GET_ALL_PRODUCT_API, UPDATE_PRODUCT_API } from '../Constants/ConstSaga'
 
 /** Lấy toàn bộ sản phẩm */
 function* getAllProductSaga(action) {
@@ -43,7 +43,7 @@ function* createProduct(action) {
             alert('Không thêm mới sản phẩm được!')
         }
     } catch (error) {
-        alert(error.response.data)
+        alert(error.response.data.message);
     }
 
 }
@@ -53,10 +53,10 @@ export function* theoDoiCreateProduct() {
 }
 
 /** Updat san pham */
-function* updateProductSaga (action){
+function* updateProductSaga(action) {
     try {
-        const {data, status} = yield call(()=>productService.updateProduct(action.id, action.sanPham));
-        if(status===STATUS_CODE.SUCCESS){
+        const { data, status } = yield call(() => productService.updateProduct(action.id, action.sanPham));
+        if (status === STATUS_CODE.SUCCESS) {
             alert('Sửa sản phẩm thành công!')
             yield put({
                 type: GET_ALL_PRODUCT_API
@@ -64,28 +64,28 @@ function* updateProductSaga (action){
             yield put({
                 type: CLOSE_MODAL_UPDATE
             })
-        }else{
+        } else {
             alert(data.response.data)
         }
     } catch (error) {
-        alert(error.response.data)
+        alert(error.response.data.message);
     }
 }
 
-export function* theoDoiUpdateProduct (){
+export function* theoDoiUpdateProduct() {
     yield takeLatest(UPDATE_PRODUCT_API, updateProductSaga)
 }
 
 /** DELETE PRODUCT */
-function* deleteProductSaga(action){
+function* deleteProductSaga(action) {
     try {
-        const {data, status}= yield call(()=>productService.deleteProduct(action.id))
-        if(status===STATUS_CODE.SUCCESS){
+        const { data, status } = yield call(() => productService.deleteProduct(action.id))
+        if (status === STATUS_CODE.SUCCESS) {
             window.confirm('Bạn có muốn xoá sản phẩm này ?')
             yield put({
                 type: GET_ALL_PRODUCT_API
             })
-        }else{
+        } else {
             console.log(status);
         }
     } catch (error) {
@@ -93,6 +93,23 @@ function* deleteProductSaga(action){
     }
 }
 
-export function* theoDoiDeleteProduct(){
+export function* theoDoiDeleteProduct() {
     yield takeLatest(DELETE_PRODUCT_API, deleteProductSaga)
+}
+
+/** BUY PRODUCT */
+function* buyProductSaga(action) {
+    try {
+        const { data, status } = yield call(() => productService.buyProduct(action.id));
+        alert(data.message);
+        yield put({
+            type: GET_ALL_PRODUCT_API
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export function* theoDoiBuyProductSaga() {
+    yield takeLatest(BUY_PRODUCT_PRODUCT_API, buyProductSaga)
 }
