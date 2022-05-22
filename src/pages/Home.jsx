@@ -107,7 +107,7 @@ export default function Home(props) {
         <div style={{ background: 'url(./img/geran-de-klerk-bKhETeDV1WM-unsplash.jpg)', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }} className='h-screen' >
             <div className='container text-center relative'>
                 <h1 className='text-5xl pt-5 text-white'>Quản lý sản phẩm</h1>
-                <button className='btn btn-success absolute top-12 right-0' onClick={() => {
+                <button className='btn btn-primary absolute top-12 right-0' onClick={() => {
                     dispatch({
                         type: OPEN_MODAL,
                         buttonTitle: CREATE_PRODUCT,
