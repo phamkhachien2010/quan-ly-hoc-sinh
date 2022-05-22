@@ -1,0 +1,5 @@
+export const OPEN_MODAL = 'OPEN_MODAL';
+export const CLOSE_MODAL = 'CLOSE_MODAL';
+export const GET_ALL_PRODUCT = 'GET_ALL_PRODUCT';
+export const OPEN_MODAL_UPDATE = 'OPEN_MODAL_UPDATE';
+export const CLOSE_MODAL_UPDATE = 'CLOSE_MODAL_UPDATE';

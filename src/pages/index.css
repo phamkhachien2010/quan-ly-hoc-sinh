@@ -1,0 +1,21 @@
+.ant-table {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    color: white !important;
+}
+
+.ant-table-row:hover td {
+    background-color: transparent !important;
+}
+
+.ant-table-thead th.ant-table-column-has-sorters:hover {
+    background-color: #fafafa !important;
+}
+
+td.ant-table-column-sort {
+    background-color: transparent !important;
+}
+
+.ant-table-tbody>tr.ant-table-row:hover>td,
+.ant-table-tbody>tr>td.ant-table-cell-row-hover {
+    background-color: transparent !important;
+}
