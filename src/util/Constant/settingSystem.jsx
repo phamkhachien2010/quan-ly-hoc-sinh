@@ -1,4 +1,5 @@
-export const DOMAIN = 'https://git.heroku.com/student-mana.git/products';
+export const DOMAIN = 'https://student-mana.herokuapp.com/';
+// export const DOMAIN = 'https://git.heroku.com/student-mana.git/products';
 
 export const TOKEN = 'accessToken';
 
